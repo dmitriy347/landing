@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дмитрий Фоменко - Python-разработчик, AI Automation</title>
+<meta name="description" content="Python-разработчик, встраиваю AI в реальные рабочие процессы: боты, интеграции, автоматизация документооборота.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="header-name" href="#top">Дмитрий Фоменко</a>
+    <nav class="header-nav">
+      <a href="#about">О себе</a>
+      <a href="#work">Кейсы</a>
+      <a href="#stack">Стек</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" id="hero">
+    <div class="wrap wrap--wide">
+      <p class="field-label">PYTHON · AI AUTOMATION</p>
+      <h1 class="hero-title">Я не просто использую AI в&nbsp;чате -<br>я встраиваю его в&nbsp;рабочие процессы.</h1>
+      <p class="hero-sub">Дмитрий Фоменко. Python-разработчик: боты, интеграции, автоматизация документооборота.</p>
+      <a class="btn" href="#work">Смотреть кейсы →</a>
+    </div>
+  </section>
+
+  <section class="about reveal" id="about">
+    <div class="wrap">
+      <p class="field-label">О СЕБЕ</p>
+      <p class="about-text">Python-разработчик с опытом продакшен-разработки (FastAPI, Django, DRF, REST API, Docker, CI/CD). До этого 6 лет провёл в B2B-продажах, поэтому умею смотреть на задачи со стороны бизнеса, а не только с технической точки зрения. Сейчас встраиваю AI в реальные процессы: боты, обработка документов, интеграции с внутренними системами.</p>
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="wrap">
+
+      <article class="case case--primary reveal">
+        <p class="field-label">ОСНОВНОЙ КЕЙС</p>
+        <h2 class="case-title">tool-issuance-bot</h2>
+
+        <p class="field-label field-label--sub">ПРОБЛЕМА:</p>
+        <p class="case-text">Бухгалтеры каждый месяц вручную переносят данные из 1С в Word, составляют акты приёма-передачи инвентаря для каждого сотрудника. Это отнимает время + вероятность допустить ошибки при копировании.</p>
+
+        <p class="field-label field-label--sub">РЕШЕНИЕ:</p>
+        <p class="case-text">Telegram-бот как интерфейс, FastAPI как backend, AI - звено пайплайна. Бухгалтер отправляет боту скриншот окна 1С → Groq Vision API распознаёт ФИО сотрудника(ов) → backend ищет сотрудника в БД и подбирает нужный шаблон акта → docxtpl генерирует готовый документ → бот мгновенно возвращает DOCX.</p>
+
+        <div class="pipeline" id="pipeline" aria-label="Схема пайплайна: скриншот, AI-извлечение, поиск в базе, генерация DOCX, доставка ботом">
+          <div class="pipeline-track" aria-hidden="true"><span class="pipeline-dot"></span></div>
+          <div class="pipeline-step"><span class="step-index">01</span>скрин 1С</div>
+          <div class="pipeline-arrow" aria-hidden="true">→</div>
+          <div class="pipeline-step"><span class="step-index">02</span>Groq Vision API</div>
+          <div class="pipeline-arrow" aria-hidden="true">→</div>
+          <div class="pipeline-step"><span class="step-index">03</span>поиск в БД</div>
+          <div class="pipeline-arrow" aria-hidden="true">→</div>
+          <div class="pipeline-step"><span class="step-index">04</span>генерация DOCX</div>
+          <div class="pipeline-arrow" aria-hidden="true">→</div>
+          <div class="pipeline-step"><span class="step-index">05</span>доставка документа</div>
+        </div>
+
+        <p class="field-label field-label--sub">РЕЗУЛЬТАТ:</p>
+        <ul class="case-list">
+          <li>рабочий end-to-end pipeline: скриншот → AI извлекает данные → БД → готовый документ;</li>
+          <li>чистое разделение слоёв: бот (транспортный слой) / FastAPI API / services (ai_extractor, excel_parser, docx_generator);</li>
+          <li>полностью асинхронный пайплайн;</li>
+          <li>сотрудники и инвентарь связаны не по ID, а через сравнение строк ФИО, т.к. данные приходят из 1С;</li>
+          <li>единая обработка ошибок через FastAPI HTTPException;</li>
+          <li>покрытие тестами AI-экстрактора, Excel-парсеров и генератора документов (pytest, async).</li>
+        </ul>
+
+        <p class="field-label field-label--sub">СТЕК:</p>
+        <ul class="tags">
+          <li class="tag">Python</li>
+          <li class="tag">FastAPI</li>
+          <li class="tag">aiogram 3</li>
+          <li class="tag">SQLAlchemy (async)</li>
+          <li class="tag">PostgreSQL</li>
+          <li class="tag">Alembic</li>
+          <li class="tag">Groq Vision API</li>
+          <li class="tag">Docker</li>
+        </ul>
+
+        <a class="case-link" href="https://github.com/dmitriy347/tool-issuance-bot" target="_blank" rel="noopener">Репозиторий tool-issuance-bot →</a>
+      </article>
+
+      <article class="case case--secondary reveal">
+        <p class="field-label">ДОПОЛНИТЕЛЬНЫЙ КЕЙС</p>
+        <h2 class="case-title">SkiTrip Journal</h2>
+        <p class="case-text">Production веб-приложение - журнал поездок на горнолыжные курорты (Django + DRF), довел от прототипа до деплоя.</p>
+
+        <p class="field-label field-label--sub">КЛЮЧЕВЫЕ МОМЕНТЫ:</p>
+        <ul class="case-list">
+          <li>REST API на 17 эндпоинтов, JWT-аутентификация, rate limiting через DRF Throttling + Redis;</li>
+          <li>асинхронная генерация миниатюр через Celery + Redis;</li>
+          <li>тестовое покрытие &gt;90% (pytest);</li>
+          <li>CI/CD на GitHub Actions (lint → test → build → deploy), Docker, продакшен на VPS (Nginx + Gunicorn + SSL).</li>
+        </ul>
+
+        <p class="case-note">Демо временно не развёрнуто (сервер отключён), но проект полностью поднимается локально командой: <code>docker-compose up</code>. CI/CD pipeline и тестовое покрытие - в репозитории.</p>
+
+        <a class="case-link" href="https://github.com/dmitriy347/MountainTrip" target="_blank" rel="noopener">Репозиторий MountainTrip →</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="stack reveal" id="stack">
+    <div class="wrap">
+      <p class="field-label">СТЕК</p>
+      <ul class="tags tags--wide">
+        <li class="tag">Python</li>
+        <li class="tag">FastAPI</li>
+        <li class="tag">Django / DRF</li>
+        <li class="tag">PostgreSQL</li>
+        <li class="tag">SQLAlchemy</li>
+        <li class="tag">Redis</li>
+        <li class="tag">Celery</li>
+        <li class="tag">Docker</li>
+        <li class="tag">GitHub Actions</li>
+        <li class="tag">Groq Vision API / LLM-интеграции</li>
+        <li class="tag">SQL</li>
+        <li class="tag">Git</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact reveal" id="contact">
+    <div class="wrap">
+      <p class="field-label">КОНТАКТЫ</p>
+      <ul class="contact-list">
+        <li><a href="mailto:d.fomenko95@gmail.com">d.fomenko95@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/dmitriy-fomenko-457188388" target="_blank" rel="noopener">LinkedIn</a></li>
+
+        <li><a href="https://github.com/dmitriy347" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">© 2026 Дмитрий Фоменко</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+/* ==========================================================
+   Дизайн-система
+   Визуальный язык страницы заимствован у самого объекта кейса —
+   официального акта/документа: хайрлайны, прямые углы,
+   моноширинные «поля» данных, светлая бумага, чёрные чернила.
+   Монохром — не дефолт, а сознательный выбор под бриф.
+   ========================================================== */
+
+:root{
+  --bg: #F6F6F4;
+  --bg-elevated: #FFFFFF;
+  --ink: #16161A;
+  --ink-soft: #3A3A3E;
+  --muted: #6B6B70;
+  --muted-2: #9A9A9E;
+  --border: #DEDEDA;
+  --border-strong: #C7C7C2;
+  --radius: 2px;
+
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+
+  --content-max: 640px;
+  --wide-max: 880px;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--ink); text-decoration: none; }
+
+.wrap{
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.wrap--wide{ max-width: var(--wide-max); }
+
+/* ---------- Field labels (form-style eyebrows) ---------- */
+.field-label{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+.field-label--sub{
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+/* ---------- Header ---------- */
+.site-header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color .25s ease, border-color .25s ease;
+}
+.site-header.is-scrolled{
+  background: rgba(246,246,244,0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner{
+  max-width: var(--wide-max);
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.header-name{
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+.header-nav{
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.header-nav a{ color: var(--muted); transition: color .15s ease; }
+.header-nav a:hover, .header-nav a:focus-visible{ color: var(--ink); }
+
+/* ---------- Hero ---------- */
+.hero{
+  padding: 168px 0 96px;
+}
+.hero-title{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+  max-width: 760px;
+}
+.hero-sub{
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 0 36px;
+}
+
+.btn{
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  background: var(--ink);
+  color: var(--bg);
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 12px 22px;
+  transition: background-color .15s ease, color .15s ease;
+}
+.btn:hover, .btn:focus-visible{
+  background: var(--ink-soft);
+  border-color: var(--ink-soft);
+}
+
+/* ---------- Reveal-on-scroll ---------- */
+.reveal{
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- About ---------- */
+.about{ padding: 64px 0; border-top: 1px solid var(--border); }
+.about-text{ font-size: 18px; max-width: 600px; }
+
+/* ---------- Work / Cases ---------- */
+.work{ padding: 32px 0 64px; }
+.case{
+  padding: 56px 0;
+  border-top: 1px solid var(--border);
+}
+.case-title{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(24px, 3.5vw, 32px);
+  margin: 0 0 28px;
+}
+.case-text{ max-width: 600px; margin: 0; }
+.case-note{
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 24px 0 0;
+}
+.case-note code{
+  font-family: var(--font-mono);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1px 6px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.case-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 600px;
+}
+.case-list li{
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 10px;
+}
+.case-list li::before{
+  content: "→";
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono);
+  color: var(--muted-2);
+}
+
+.case-link{
+  display: inline-block;
+  margin-top: 32px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  transition: opacity .15s ease;
+}
+.case-link:hover, .case-link:focus-visible{ opacity: 0.6; }
+
+/* ---------- Tags ---------- */
+.tags{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  max-width: 600px;
+}
+.tags--wide{ max-width: var(--wide-max); }
+.tag{
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 5px 10px;
+  color: var(--ink-soft);
+}
+
+/* ---------- Pipeline (signature element) ---------- */
+.pipeline{
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 36px 0 12px;
+  padding: 28px 20px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.pipeline-track{
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: var(--border-strong);
+  z-index: 0;
+}
+.pipeline-dot{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: 0;
+}
+.pipeline.is-active .pipeline-dot{
+  animation: flow 2.6s ease-in-out 0.3s 1 forwards;
+}
+@keyframes flow{
+  0%   { left: 0%;   opacity: 0; }
+  6%   { opacity: 1; }
+  94%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce){
+  .pipeline-dot{ display: none; }
+}
+
+.pipeline-step{
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  min-width: 110px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-align: center;
+  background: var(--bg-elevated);
+  padding: 4px 6px;
+}
+.step-index{
+  display: block;
+  font-size: 11px;
+  color: var(--muted-2);
+  margin-bottom: 6px;
+  letter-spacing: 0.08em;
+}
+.pipeline-arrow{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  color: var(--muted-2);
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 700px){
+  .pipeline{ flex-direction: column; padding: 20px; }
+  .pipeline-track{ display: none; }
+  .pipeline-arrow{ transform: rotate(90deg); padding: 6px 0; align-self: center; }
+  .pipeline-step{ width: 100%; }
+}
+
+/* ---------- Stack section ---------- */
+.stack{ padding: 64px 0; border-top: 1px solid var(--border); }
+
+/* ---------- Contact ---------- */
+.contact{
+  padding: 80px 0 96px;
+  border-top: 1px solid var(--border);
+}
+.contact-title{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(26px, 4vw, 36px);
+  margin: 0 0 28px;
+}
+.contact-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.contact-list a{
+  font-family: var(--font-mono);
+  font-size: 18px;
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 2px;
+  transition: opacity .15s ease;
+}
+.contact-list a:hover, .contact-list a:focus-visible{ opacity: 0.6; }
+
+/* ---------- Footer ---------- */
+.site-footer{
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted-2);
+}
+
+/* ---------- Focus visibility ---------- */
+a:focus-visible, .btn:focus-visible{
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}

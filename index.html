@@ -55,18 +55,27 @@
         <p class="field-label field-label--sub">РЕШЕНИЕ:</p>
         <p class="case-text">Telegram-бот как интерфейс, FastAPI как backend, AI - звено пайплайна. Бухгалтер отправляет боту скриншот окна 1С → Groq Vision API распознаёт ФИО сотрудника(ов) → backend ищет сотрудника в БД и подбирает нужный шаблон акта → docxtpl генерирует готовый документ → бот мгновенно возвращает DOCX.</p>
 
-        <div class="pipeline" id="pipeline" aria-label="Схема пайплайна: скриншот, AI-извлечение, поиск в базе, генерация DOCX, доставка ботом">
-          <div class="pipeline-track" aria-hidden="true"><span class="pipeline-dot"></span></div>
-          <div class="pipeline-step"><span class="step-index">01</span>скрин 1С</div>
-          <div class="pipeline-arrow" aria-hidden="true">→</div>
-          <div class="pipeline-step"><span class="step-index">02</span>Groq Vision API</div>
-          <div class="pipeline-arrow" aria-hidden="true">→</div>
-          <div class="pipeline-step"><span class="step-index">03</span>поиск в БД</div>
-          <div class="pipeline-arrow" aria-hidden="true">→</div>
-          <div class="pipeline-step"><span class="step-index">04</span>генерация DOCX</div>
-          <div class="pipeline-arrow" aria-hidden="true">→</div>
-          <div class="pipeline-step"><span class="step-index">05</span>доставка документа</div>
-        </div>
+      </article>
+    </div>
+
+    <!-- Пайплайн вынесен на полную ширину -->
+    <div class="wrap wrap--wide">
+      <div class="pipeline" id="pipeline" aria-label="Схема пайплайна: скриншот, AI-извлечение, поиск в базе, генерация DOCX, доставка ботом">
+        <div class="pipeline-track" aria-hidden="true"><span class="pipeline-dot"></span></div>
+        <div class="pipeline-step"><span class="step-index">01</span>скрин 1С</div>
+        <div class="pipeline-arrow" aria-hidden="true">→</div>
+        <div class="pipeline-step"><span class="step-index">02</span>Groq Vision API</div>
+        <div class="pipeline-arrow" aria-hidden="true">→</div>
+        <div class="pipeline-step"><span class="step-index">03</span>поиск в БД</div>
+        <div class="pipeline-arrow" aria-hidden="true">→</div>
+        <div class="pipeline-step"><span class="step-index">04</span>генерация DOCX</div>
+        <div class="pipeline-arrow" aria-hidden="true">→</div>
+        <div class="pipeline-step"><span class="step-index">05</span>доставка документа</div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <article class="case case--primary-cont reveal">
 
         <p class="field-label field-label--sub">РЕЗУЛЬТАТ:</p>
         <ul class="case-list">
@@ -139,8 +148,8 @@
       <p class="field-label">КОНТАКТЫ</p>
       <ul class="contact-list">
         <li><a href="mailto:d.fomenko95@gmail.com">d.fomenko95@gmail.com</a></li>
+        <li><a href="https://t.me/dmitriy_fomenko95" target="_blank" rel="noopener">Telegram</a></li>
         <li><a href="https://www.linkedin.com/in/dmitriy-fomenko-457188388" target="_blank" rel="noopener">LinkedIn</a></li>
-
         <li><a href="https://github.com/dmitriy347" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </div>

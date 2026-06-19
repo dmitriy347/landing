@@ -5,7 +5,7 @@
 
 ## Демо
 
-→ (ссылка появится после деплоя на Vercel)
+https://landingportfolio-eight.vercel.app/
 
 ## Стек
 
